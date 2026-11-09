@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 44 28% 95%; /* #F6F3EB warm archival paper */
+    --foreground: 24 10% 12%; /* #221F1D charcoal */
+    --card: 40 25% 97%; /* #FAF8F2 warm parchment card */
+    --card-foreground: 24 10% 12%;
+    --popover: 40 25% 98%;
+    --popover-foreground: 24 10% 12%;
+    --primary: 15 54% 45%; /* #B24C34 warm terracotta clay */
+    --primary-foreground: 44 28% 98%;
+    --secondary: 40 18% 88%; /* #E8E3D7 muted linen */
+    --secondary-foreground: 24 10% 20%;
+    --muted: 40 15% 90%;
+    --muted-foreground: 24 8% 40%;
+    --accent: 38 65% 52%; /* #D99B26 amber bronze */
+    --accent-foreground: 24 10% 10%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 38 18% 84%; /* #DDD7CA tactile border */
+    --input: 38 18% 84%;
+    --ring: 15 54% 45%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 216 28% 7%; /* #0D1117 deep abyssal obsidian */
+    --foreground: 210 20% 95%; /* #EAEFF5 crisp platinum */
+    --card: 218 24% 10%; /* #111722 dark oceanic slate */
+    --card-foreground: 210 20% 95%;
+    --popover: 218 24% 9%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 38 90% 55%; /* #F6A323 luminous amber glow */
+    --primary-foreground: 216 28% 7%;
+    --secondary: 218 20% 16%; /* #1C2432 metallic gunmetal */
+    --secondary-foreground: 210 20% 90%;
+    --muted: 218 20% 14%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 187 75% 42%; /* #1AA0B8 subaquatic cyan */
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 218 18% 18%; /* #1F2837 subtle dark border */
+    --input: 218 18% 18%;
+    --ring: 38 90% 55%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary transition-colors duration-300;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Tactile Craft & Film Atmosphere Utilities */
+.film-grain {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.dark .film-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+}
+
+.glass-panel {
+  background: rgba(var(--card), 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--border) / 0.7);
+}
+
+.glass-nav {
+  background: hsl(var(--background) / 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid hsl(var(--border) / 0.6);
+}
+
+.tactile-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.tactile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.12);
+}
+
+.dark .tactile-card:hover {
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.55), 0 0 1px 1px hsl(var(--primary) / 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.6);
+}
+
+/* Text glow */
+.text-glow-amber {
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
